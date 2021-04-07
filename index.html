@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>poiesis</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" href="https://use.typekit.net/fxn8rrf.css">
+  <script src="https://kit.fontawesome.com/00fac54728.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class='container'>
+    <div class="containerPoiesis">
+      <img id="poiesis" src="poiesis-gif.gif"> 
+    </div>
+    <div class="containerDialog">  
+
+      <div class="contentDialog" id="init" style="display: block; justify-content:center; text-align: center;">
+          <p id="titulo" style="font-family: Temeraire,serif;font-weight: 600; font-style: italic; margin: 0px;"> Poiesis</p>
+          <br>
+          <p style=> Fico feliz em receber você em meu lar.</p>
+          
+      </div>
+      <div class="contentDialog" id="acalme">
+        <img src="giphy.gif">
+        <p id="calm">Preste atenção em sua concentração.</p>
+        <br>
+
+      </div>
+      <div class="contentDialog" id="poesia01">
+        <p>Khalil Gibran</p>
+        <br>
+        <p>Quando vosso amigo expressa o pensamento,<br>
+          não temais o "não" de vossa própria opinião,<br>
+          nem prendais o "sim".<br>
+          E quando ele se cala, que vosso coração<br>
+          continue a ouvir o coração dele...<br>
+          <br>
+          Quando vos separais de vosso amigo,<br>
+          não vos aflijais.<br>
+          Pois o que amais nele<br>
+          pode tornar-se mais claro na sua ausência,<br>
+          como para o alpinista a montanha<br>
+          aparece mais clara, vista da planície.</p>
+
+    </div>
+
+    <div class="contentDialog" id="dialogo">
+
+  <div class='wrapper'>
+    <div class="dialogue" id="dialogue"></div>
+    <form onSubmit="return sendMessage()">
+      <div class="text-box">
+        <input type="text" name="message" id="message" autocomplete="off" disabled placeholder="Please wait... loading...">
+        <input class="send-button" type="submit" value="&#xf0a9">
+      </div>
+    </form>
+  </div>
+  </div>
+  
+    </div>
+
+  <div class="containerOpt">
+
+    <div class="tabOption" id="tabInit">
+        <button class="tablinks" onmouseover="audioclick()" onclick="dialogo(event, 'dialogo', 'tabDialog')">vamos conversar</button>
+        <button class="tablinks" onmouseover="audioclick()" onclick="dialogo(event, 'acalme', 'tabResp')">está ansiosa?</button>        
+        <button class="tablinks" onmouseover="audioclick()" onclick="dialogo(event, 'poesia01', 'tabPoesia')">sobre você</button>
+ 
+      </div>
+
+      <div class="tabOption" id="tabDialog">
+        <button class="tablinks" onmouseover="audioclick()" onclick="dialogo(event, 'init', 'tabInit')">voltar</button> 
+      </div>
+
+    <div class="tabOption" id="tabPoesia">
+        <button class="tablinks" onmouseover="audioclick()" onclick="dialogo(event, 'poesia01', 'tabPoesia')">Próxima</button>
+        <button class="tablinks" onmouseover="audioclick()" onclick="dialogo(event, 'init', 'tabInit')">voltar</button>        
+
+    </div>
+
+    <div class="tabOption" id="tabResp">
+      <button class="tablinks" onmouseover="audioclick()" onclick="dialogo(event, 'init', 'tabInit')">voltar</button>     
+    </div>
+
+
+</div>
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<!--   <script src="https://unpkg.com/rivescript@latest/dist/rivescript.min.js"></script> -->
+    <script src="lib/rivescript.js"></script>
+
+<script src="code.js"></script>
+<script>function dialogo(event, option, tab) {
+  var i, contentDialog, dialoglinks, contentTab;
+
+  contentDialog = document.getElementsByClassName("contentDialog");
+  for(i = 0; i < contentDialog.length; i++) {
+      contentDialog[i].style.display = "none";
+      console.log(contentDialog[i]);
+  }
+
+
+  dialoglinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < dialoglinks.length; i++) {
+      dialoglinks[i].className = dialoglinks[i].className.replace( "active", "");
+  }
+  document.getElementById(option).style.display = "block";
+  event.currentTarget.className += " active";
+
+  contentTab = document.getElementsByClassName("tabOption");
+
+  for(i = 0; i < contentTab.length; i++) {
+      contentTab[i].style.display = "none";
+  }
+  document.getElementById(tab).style.display = "block";
+
+
+}</script>
+</body>
+
+</html>
